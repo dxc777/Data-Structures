@@ -6,6 +6,8 @@ public interface AbstractStack<T>
 	
 	public T pop();
 	
+	public T top();
+	
 	public T get(int index);
 	
 	public int size();
