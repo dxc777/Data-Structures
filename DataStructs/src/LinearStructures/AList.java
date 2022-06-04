@@ -2,7 +2,7 @@ package LinearStructures;
 
 import java.util.Arrays;
 
-public class AList<T> implements List<T>
+public class AList<T> implements AbstractList<T>
 {	
 	private T[] arr;
 	

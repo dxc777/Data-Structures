@@ -1,6 +1,6 @@
 package LinearStructures;
 
-public class LList<T> implements List<T>
+public class LList<T> implements AbstractList<T>
 {
 
 	@Override

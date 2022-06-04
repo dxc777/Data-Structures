@@ -6,7 +6,7 @@ package LinearStructures;
  *
  * @param <T>
  */
-public interface List<T>
+public interface AbstractList<T>
 {
 	public T get(int index);
 	
