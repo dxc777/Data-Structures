@@ -123,5 +123,18 @@ public class AList<T> implements List<T>
 		if(size < arr.length) return;
 		arr = Arrays.copyOf(arr, size * 2);
 	}
+	
+	public String toString() 
+	{
+		StringBuilder s = new StringBuilder();
+		s.append("[");
+		for(int i = 0; i < size - 1; i++) 
+		{
+			s.append(arr[i] + ", ");
+		}
+		if(isEmpty() == false) s.append(arr[size - 1]);
+		s.append("]");
+		return s.toString();
+	}
 
 }
