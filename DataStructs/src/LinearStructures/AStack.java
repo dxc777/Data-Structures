@@ -29,6 +29,7 @@ public class AStack<T> implements AbstractStack<T>
 	@Override
 	public T pop()
 	{
+		if(isEmpty()) return null;
 		return stack[--size];
 	}
 
@@ -65,6 +66,19 @@ public class AStack<T> implements AbstractStack<T>
 	{
 		if(isEmpty()) return null;
 		return stack[size - 1];
+	}
+	
+	public String toString() 
+	{
+		StringBuilder s = new StringBuilder();
+		s.append("[");
+		for(int i = size - 1; i > 0; i--) 
+		{
+			s.append(stack[i] + ", ");
+		}
+		if(isEmpty() == false) s.append(stack[0]);
+		s.append("]");
+		return s.toString();
 	}
 	
 }

@@ -14,5 +14,6 @@ public interface AbstractStack<T>
 	
 	public boolean isEmpty();
 	
+	public String toString();
 	
 }
