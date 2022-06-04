@@ -40,46 +40,88 @@ public class AList<T> implements List<T>
 		return arr[index];
 	}
 
+	/**
+	 * Append an item to the end of the list
+	 * If the backing array is full then it will double in size
+	 */
 	@Override
 	public void append(T item)
 	{
-		// TODO Auto-generated method stub
-		
+		growIfNeeded();
+		arr[size++] = item;
 	}
 
+	/**
+	 * Insert an item at a specified index
+	 * I don't check if the index is == size since inserting when index == size is the same as appending to the 
+	 * end. So to remain consistent I allow inserting at end of the list 
+	 */
 	@Override
 	public void insert(int index, T item)
 	{
-		// TODO Auto-generated method stub
-		
+		if(index < 0 || index > size) return;
+		shiftElementsRight(index);
+		arr[index] = item;
+		size++;
+	}
+	
+	private void shiftElementsRight(int index) 
+	{
+		growIfNeeded();
+		for(int i = size; i > index; i--) 
+		{
+			arr[i] = arr[i - 1];
+		}
 	}
 
+	/**
+	 * reset size but keep old arr length
+	 * 
+	 */
 	@Override
 	public void clear()
 	{
-		// TODO Auto-generated method stub
-		
+		size = 0;
 	}
 
+	
 	@Override
 	public T remove(int index)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		if(index < 0 || index >= size || size == 0) 
+		{
+			return null;
+		}
+		T save = arr[index];
+		shiftElementsLeft(index);
+		size--;
+		return save;
+	}
+	
+	private void shiftElementsLeft(int index) 
+	{
+		for(int i = index; i < size - 1; i++) 
+		{
+			arr[i] = arr[i + 1];
+		}
 	}
 
 	@Override
 	public int size()
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 	@Override
 	public boolean isEmpty()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return size == 0;
+	}
+	
+	private void growIfNeeded() 
+	{
+		if(size < arr.length) return;
+		arr = Arrays.copyOf(arr, size * 2);
 	}
 
 }
