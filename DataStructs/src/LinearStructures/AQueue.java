@@ -51,7 +51,20 @@ public class AQueue<T> implements AbstractQueue<T>
 	
 	public boolean isFull() 
 	{
-		return (back + 1) % q.length == front;
+		return size == q.length;
+	}
+	
+	public String toString() 
+	{
+		StringBuilder s = new StringBuilder();
+		s.append("Front of queue -> [");
+		for(int i = front, j = 0; j < size - 1;i = (i + 1) % q.length ,j++)
+		{
+			s.append(q[i] + ", ");
+		}
+		if(isEmpty() == false) s.append(q[back - 1]);
+		s.append("]");
+		return s.toString();
 	}
 
 }

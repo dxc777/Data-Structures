@@ -47,5 +47,20 @@ public class LQueue<T> implements AbstractQueue<T>
 	{
 		return size;
 	}
+	
+	public String toString() 
+	{
+		StringBuilder s = new StringBuilder();
+		s.append("[");
+		Link<T> curr = head.next;
+		while(curr != null && curr.next != null) 
+		{
+			s.append(curr.element + ", ");
+			curr = curr.next;
+		}
+		if(isEmpty() == false) s.append(curr.element);
+		s.append("]");
+		return s.toString();
+	}
 
 }
