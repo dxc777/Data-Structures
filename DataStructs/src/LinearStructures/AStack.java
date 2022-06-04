@@ -71,6 +71,7 @@ public class AStack<T> implements AbstractStack<T>
 	public String toString() 
 	{
 		StringBuilder s = new StringBuilder();
+		s.append("Top of stack -> ");
 		s.append("[");
 		for(int i = size - 1; i > 0; i--) 
 		{

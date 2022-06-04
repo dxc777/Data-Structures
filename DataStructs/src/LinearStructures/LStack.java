@@ -6,10 +6,13 @@ public class LStack<T> implements AbstractStack<T>
 	
 	private int size;
 	
+	public LStack(){}
+	
 	@Override
 	public void push(T item)
 	{
 		head = new Link(item, head);
+		size++;
 	}
 
 	@Override
@@ -18,6 +21,7 @@ public class LStack<T> implements AbstractStack<T>
 		if(isEmpty()) return null;
 		T save = head.element;
 		head = head.next;
+		size--;
 		return save;
 	}
 
