@@ -22,6 +22,7 @@ public class Node<Type extends Comparable<Type>>
 		this.right = right;
 	}
 	
+	
 	public String toString() 
 	{
 		return element == null ? "Null" : element.toString();
