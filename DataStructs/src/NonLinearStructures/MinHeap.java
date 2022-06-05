@@ -33,7 +33,7 @@ public class MinHeap<T extends Comparable<T>>
 		size++;
 	}
 	
-	public void heapUp(int index) 
+	private void heapUp(int index) 
 	{
 		while(index != 0 && heap[getParent(index)].compareTo((T) heap[index]) > 0) 
 		{

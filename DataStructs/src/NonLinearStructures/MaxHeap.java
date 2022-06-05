@@ -33,7 +33,7 @@ public class MaxHeap<T extends Comparable<T>>
 		size++;
 	}
 	
-	public void heapUp(int index) 
+	private void heapUp(int index) 
 	{
 		while(index != 0 && heap[getParent(index)].compareTo((T) heap[index]) < 0) 
 		{
@@ -70,7 +70,7 @@ public class MaxHeap<T extends Comparable<T>>
 		}
 	}
 	
-	public void heapify(Comparable<T>[] heap) 
+	private void heapify(Comparable<T>[] heap) 
 	{
 		for(int i = getParent(heap.length - 1); i >= 0; i--) 
 		{
