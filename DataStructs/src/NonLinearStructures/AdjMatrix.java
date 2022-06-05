@@ -23,6 +23,7 @@ public class AdjMatrix implements Graph
 	@Override
 	public void addEdge(int vertex, int adjVertex, int weight)
 	{
+		if(weight == 0)return;
 		matrix[vertex][adjVertex] = weight;
 	}
 
