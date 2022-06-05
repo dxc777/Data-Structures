@@ -2,24 +2,24 @@ package NonLinearStructures;
 
 import java.util.Arrays;
 
-public class MaxHeap<T extends Comparable<T>>
+public class MinHeap<T extends Comparable<T>>
 {
 	private Comparable<T>[] heap;
 	
 	private int size;
 	
-	public MaxHeap() 
+	public MinHeap() 
 	{
 		this(10);
 	}
 	
-	public MaxHeap(int size) 
+	public MinHeap(int size) 
 	{
 		heap = new Comparable[size];
 		size = 0;
 	}
 	
-	public MaxHeap(Comparable<T>[] heap) 
+	public MinHeap(Comparable<T>[] heap) 
 	{
 		heapify(heap);
 		size = heap.length;
@@ -35,7 +35,7 @@ public class MaxHeap<T extends Comparable<T>>
 	
 	public void heapUp(int index) 
 	{
-		while(index != 0 && heap[getParent(index)].compareTo((T) heap[index]) < 0) 
+		while(index != 0 && heap[getParent(index)].compareTo((T) heap[index]) > 0) 
 		{
 			swap(getParent(index), index);
 			index  = getParent(index);
@@ -56,12 +56,12 @@ public class MaxHeap<T extends Comparable<T>>
 		while(getLeftChild(index) < size) 
 		{
 			int compareIndex = getLeftChild(index);
-			if(compareIndex + 1 < size && heap[compareIndex].compareTo((T) heap[compareIndex + 1]) < 0) 
+			if(compareIndex + 1 < size && heap[compareIndex].compareTo((T) heap[compareIndex + 1]) > 0) 
 			{
 				compareIndex++;
 			}
 			
-			if(heap[index].compareTo((T) heap[compareIndex]) > 0 ) 
+			if(heap[index].compareTo((T) heap[compareIndex]) < 0 ) 
 			{
 				return;
 			}
