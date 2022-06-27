@@ -21,10 +21,10 @@ public class AdjList implements Graph
 		}
 	}
 	
-	private Edge getEdgeBefore(int vertex) 
+	private Edge getEdgeBefore(int vertex, int adjVertex) 
 	{
 		Edge curr = graph[vertex];
-		while(curr.next != null && curr.next.adjVertex < vertex) 
+		while(curr.next != null && adjVertex > curr.next.adjVertex ) 
 		{
 			curr = curr.next;
 		}
@@ -41,7 +41,7 @@ public class AdjList implements Graph
 	public void addEdge(int vertex, int adjVertex, int weight)
 	{
 		if(weight == 0) return;
-		Edge edgeBefore = getEdgeBefore(vertex);
+		Edge edgeBefore = getEdgeBefore(vertex,adjVertex);
 		if(edgeBefore.next != null && edgeBefore.next.adjVertex == adjVertex) 
 		{
 			edgeBefore.next.weight = weight;
@@ -55,7 +55,7 @@ public class AdjList implements Graph
 	@Override
 	public void removeEdge(int vertex, int adjVertex)
 	{
-		Edge edgeBefore = getEdgeBefore(vertex);
+		Edge edgeBefore = getEdgeBefore(vertex,adjVertex);
 		if(edgeBefore.next != null && edgeBefore.next.adjVertex == adjVertex) 
 		{
 			edgeBefore.next = edgeBefore.next.next;
@@ -65,14 +65,14 @@ public class AdjList implements Graph
 	@Override
 	public boolean hasEdge(int vertex, int adjVertex)
 	{
-		Edge edgeBefore = getEdgeBefore(vertex);
+		Edge edgeBefore = getEdgeBefore(vertex,adjVertex);
 		return edgeBefore != null && edgeBefore.next.adjVertex == adjVertex;
 	}
 
 	@Override
 	public int weight(int vertex, int adjVertex)
 	{
-		Edge edgeBefore = getEdgeBefore(vertex);
+		Edge edgeBefore = getEdgeBefore(vertex,adjVertex);
 		if(edgeBefore.next == null || edgeBefore.next.adjVertex != adjVertex) 
 		{
 			return 0;
@@ -123,6 +123,23 @@ public class AdjList implements Graph
 		return adjVertexes;
 	}
 	
-	
+	public String toString() 
+	{
+		StringBuilder s = new StringBuilder();
+		for(int i = 0; i < graph.length; i++) 
+		{
+			s.append(i + ": ");
+			Edge curr = graph[i].next;
+			while(curr != null) 
+			{
+				s.append("[" + curr.adjVertex + "|" + curr.weight + "]");
+				s.append(" -> ");
+				curr = curr.next;
+			}
+			s.append("X\n");
+			
+		}
+		return s.toString();
+	}
 	
 }
